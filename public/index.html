@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Simons Game</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="main" ng-app="SimonsGameApp" ng-controller="myCtrl as app">
+    <button class="button" ng-click="app.gameStarter(true, true)">New Game</button>
+    <div>
+        <button ng-class="app.isStrictMode ? 'button_strict_on' : 'button_strict_off'"
+                ng-click="app.config(undefined, true)">Strict mode
+        </button>
+    </div>
+    <div ng-repeat="(key, val) in app.difficultyButtons">
+        <button class="difficult_buttons" ng-Disabled="app.difficulty === val" ng-click="app.config(val)">
+            {{key}}
+        </button>
+    </div>
+    <div ng-repeat="(index, val) in app.fieldButtons track by $index">
+        <button ng-class="val ? 'buttons' : 'buttons_active'" ng-Disabled="app.isBlockField"
+                ng-click="app.checkWin(index)"></button>
+    </div>
+    <span class="display">Now {{app.comboArr.length}} steps combo!</span>
+</div>
+</body>
+</html>
