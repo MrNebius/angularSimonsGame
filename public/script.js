@@ -48,7 +48,7 @@ angular.module('SimonsGameApp', [])
                 .then(() => {
                     $scope.$apply(() => {
                         let newIndex = index;
-                        if (this.fieldButtons[arr[index]]) {
+                        if (!this.fieldButtons[arr[index]]) {
                             newIndex++;
                         }
                         this.fieldButtons[arr[index]] = !this.fieldButtons[arr[index]] ;
